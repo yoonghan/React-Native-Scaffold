@@ -1,5 +1,5 @@
 import React from 'react';
-import { NetInfo } from 'react-native';
+import { NetInfo, Platform } from 'react-native';
 import {ErrorText} from '../components/ErrorText';
 
 interface Props {}
@@ -19,13 +19,26 @@ const hasNetwork = (Component: React.ComponentType) =>
       }
     }
 
+    updateConnection = (isConnected) => {
+      this.setState((prevState) => ({
+        isChecking: false,
+        isConnectable: isConnected
+      }));
+    }
+
+    handleFirstConnectivityChange = (isConnected) => {
+      this.updateConnection(isConnected);
+      NetInfo.isConnected.removeEventListener('connectionChange', this.handleFirstConnectivityChange);
+    }
+
     async componentWillMount() {
-      NetInfo.isConnected.fetch().then(isConnected => {
-        this.setState((prevState) => ({
-          isChecking: false,
-          isConnectable: isConnected
-        }));
-      });
+      if (Platform.OS === 'ios') {
+  	     NetInfo.isConnected.addEventListener('connectionChange', this.handleFirstConnectivityChange);
+      } else {
+        NetInfo.isConnected.fetch().then(isConnected => {
+          this.updateConnection(isConnected);
+        });
+      }
     }
 
     render() {
