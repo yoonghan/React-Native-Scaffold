@@ -8,6 +8,7 @@ export interface BtcHistoryItemI {
 
 export interface BtcHistoryI {
   items: Array<BtcHistoryItemI>;
+  cryptType: string;
   lastUpdatedDate: Date;
   error: string;
 }

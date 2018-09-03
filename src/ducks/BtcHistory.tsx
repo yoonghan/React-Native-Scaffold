@@ -35,7 +35,7 @@ const unixTimeToDate = (unixTimestamp: number) => {
   return new Date(unixTimestamp * miliseconds);
 }
 
-const reformatData = (data) => {
+const reformatData = (data, ccType) => {
   const lastFetchTime = unixTimeToDate(data.TimeTo);
   const historyData = data.Data;
   const historicalDatas = [];
@@ -45,7 +45,7 @@ const reformatData = (data) => {
     const translateData = createHistoryData(perDayData.time, perDayData.open, perDayData.close, perDayData.low, perDayData.high);
     historicalDatas.push(translateData);
   }
-  return {time:lastFetchTime, data:historicalDatas};
+  return {time:lastFetchTime, data:historicalDatas, cryptType: ccType};
 };
 
 const formatUrlExchange = (url, exchange) =>
@@ -57,7 +57,7 @@ export const fetchBtcHistory = (ccType) => () => {
     return Connector.get(formatUrlExchange(btc_history_url, ccType))
       .then(res => res.data)
       .then(handleErrors)
-      .then(json => reformatData(json))
+      .then(json => reformatData(json, ccType))
       .then(formattedData => {
         dispatch(fetchBtcHistorySuccess(formattedData));
         return formattedData;
@@ -75,6 +75,7 @@ function handleErrors(data) {
 
 const initialState:BtcHistoryI = {
   items: [],
+  cryptType: '',
   lastUpdatedDate: 0,
   error: null
 };
@@ -90,6 +91,7 @@ export function fetchBtcHistoryReducer(state = initialState, action) {
       return {
         ...state,
         items: action.payload.btchistory.data,
+        cryptType: action.payload.btchistory.cryptType,
         lastUpdatedDate: action.payload.btchistory.time
       };
     case FETCH_BTC_HISTORY_FAILURE:

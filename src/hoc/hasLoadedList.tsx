@@ -4,10 +4,6 @@ import {connect} from "react-redux";
 import {ErrorText} from '../components/ErrorText';
 import {Loader} from '../components/Loader';
 
-interface RenderData {
-  key: string;
-}
-
 interface Props {}
 
 interface States {}

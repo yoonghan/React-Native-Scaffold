@@ -12,7 +12,7 @@ const BtcContainer: React.SFC<Props> = (props) => {
         <PriceListContainer/>
       </View>
       <View style={styles.papaya}>
-        <Label text={"BTC Trend 30days"}/>
+        <Label text={"Crypto Trend of 30 days"}/>
         <PriceHistoryContainer/>
       </View>
     </View>);

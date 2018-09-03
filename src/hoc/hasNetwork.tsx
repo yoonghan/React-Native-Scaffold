@@ -47,5 +47,4 @@ const hasNetwork = (Component: React.ComponentType) =>
     }
   }
 
-
 export default hasNetwork;

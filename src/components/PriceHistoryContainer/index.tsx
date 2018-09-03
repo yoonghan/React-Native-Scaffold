@@ -44,7 +44,7 @@ class PriceHistoryContainer extends React.Component<Props, State> {
   render() {
     return (
         <View style={styles.carrot}>
-          <Text style={styles.lemon}>Last Updated On: {this._convertDateToTime(this.props.lastUpdatedDate)}</Text>
+          <Text style={styles.lemon}>Updated {this.props.cryptType} On: {this._convertDateToTime(this.props.lastUpdatedDate)}</Text>
           <Switch
               onValueChange = {this._toggleSwitch}
               value = {this.state.isBarChart}/>
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => (
 {
   items: state.btcHistory.items,
+  cryptType: state.btcHistory.cryptType,
   lastUpdatedDate: state.btcHistory.lastUpdatedDate,
   error: state.btcHistory.error
 });

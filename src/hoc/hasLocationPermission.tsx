@@ -33,5 +33,4 @@ const hasLocationPermission = (Component: React.ComponentType) =>
     }
   }
 
-
 export default hasLocationPermission;
