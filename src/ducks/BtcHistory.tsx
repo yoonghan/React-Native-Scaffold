@@ -85,7 +85,8 @@ export function fetchBtcHistoryReducer(state = initialState, action) {
     case FETCH_BTC_HISTORY_BEGIN:
       return {
         ...state,
-        error: null
+        error: null,
+        items: []
       };
     case FETCH_BTC_HISTORY_SUCCESS:
       return {
