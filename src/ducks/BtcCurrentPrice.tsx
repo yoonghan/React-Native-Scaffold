@@ -64,7 +64,7 @@ const initialState:BtcCurrentPriceI = {
   error: null
 };
 
-export function fetchBtcCurrentPriceReducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_BTC_CURRENT_BEGIN:
       return {

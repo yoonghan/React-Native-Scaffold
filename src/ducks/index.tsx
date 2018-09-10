@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { fetchBtcHistoryReducer } from './BtcHistory';
-import { fetchBtcCurrentPriceReducer } from './BtcCurrentPrice';
+import * as BtcHistory from './BtcHistory';
+import * as BtcCurrentPrice from './BtcCurrentPrice';
 
 export default combineReducers({
-  btcHistory : fetchBtcHistoryReducer,
-  btcCurrent : fetchBtcCurrentPriceReducer
+  btcHistory : BtcHistory.reducer,
+  btcCurrent : BtcCurrentPrice.reducer
 });

@@ -80,7 +80,7 @@ const initialState:BtcHistoryI = {
   error: null
 };
 
-export function fetchBtcHistoryReducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_BTC_HISTORY_BEGIN:
       return {
