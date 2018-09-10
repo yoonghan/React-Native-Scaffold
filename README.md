@@ -19,6 +19,13 @@ Start Android emulator
 react-native run-android
 ```
 
+## Storybook
+Implemented component UI view directly from device, which is based on storybook. To configure it.
+1. Change index.js and alter between Storybook or App.
+2. Start the emulator with "react-native run-<platform>".
+3. Start the storybook with "npm run storybook".
+4. Open a browser to *http://localhost:7007*, and the components can be viewed. If there are no menu, check again index.js.
+
 ## 3rd Party API used.
 
 | Api        | Usage           | Url  | License  |

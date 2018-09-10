@@ -1,12 +1,10 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {BtcCurrentPriceItemI} from '../../interfaces/BtcCurrentPriceI';
-
-interface Props extends BtcCurrentPriceItemI {}
+import PropTypes from 'prop-types';
+import { Text, View, StyleSheet } from 'react-native';
 
 export const ScrollItem: React.SFC<Props> = (props) => {
-
   _renderPrice = (price:number) => price.toFixed(2)
+
   return(
     <View style={styles.pineapple}>
        <Text style={styles.peach}>{props.fromExchange}</Text>
@@ -14,6 +12,14 @@ export const ScrollItem: React.SFC<Props> = (props) => {
     </View>
   );
 }
+
+ScrollItem.propTypes = ScrollItemProps;
+
+export const ScrollItemProps = {
+  price: PropTypes.number.isRequired,
+  fromExchange: PropTypes.string.isRequired,
+  toCurrency: PropTypes.string.isRequired
+};
 
 const styles = StyleSheet.create({
   pineapple: {

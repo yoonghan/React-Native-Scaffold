@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory-native";
 import {BtcHistoryItemI} from '../../interfaces/BtcHistoryListI';
 
@@ -32,3 +33,14 @@ export const BarChart: React.SFC<Props> = (props) => {
     </VictoryChart>
   );
 }
+
+export const BarChartItemProps = {
+  x: PropTypes.object.isRequired,
+  close: PropTypes.number.isRequired
+}
+
+export const BarChartProps = {
+  items: PropTypes.arrayOf(PropTypes.shape(BarChartItemProps)).isRequired,
+};
+
+BarChart.propTypes = BarChartProps;
