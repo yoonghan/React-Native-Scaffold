@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { PermissionsAndroid } from 'react-native';
 import {ErrorText} from '../components/ErrorText';
 import { requestLocationPermission } from '../utils/RequestPermission';

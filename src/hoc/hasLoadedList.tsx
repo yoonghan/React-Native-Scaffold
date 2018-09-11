@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {ErrorText} from '../components/ErrorText';
@@ -15,7 +15,7 @@ const hasLoadedList = (dispatchFunc) => (Component: React.ComponentType) =>
     }
 
     componentDidMount(){
-      this.props.dispatch(dispatchFunc());
+        this.props.dispatch(dispatchFunc());
     }
 
     _isEmpty = (items) => {

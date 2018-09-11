@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { PermissionsAndroid } from 'react-native';
 import {Loader} from '../components/Loader';
 import {ErrorText} from '../components/ErrorText';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {fetchBtcHistory} from '../ducks/BtcHistory';
@@ -27,9 +27,7 @@ const withBtcConnectivity = (Component: React.ComponentType) =>
     }
   }
 
-const mapStateToProps = state => (
-{
-});
+const mapStateToProps = state => ({});
 
 export default compose(
   connect(mapStateToProps),

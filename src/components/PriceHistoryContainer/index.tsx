@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react';
 import {compose} from 'redux';
 import hasNetwork from '../../hoc/hasNetwork';
 import hasLoadedList from "../../hoc/hasLoadedList";

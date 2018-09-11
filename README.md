@@ -26,6 +26,10 @@ Implemented component UI view directly from device, which is based on storybook.
 3. Start the storybook with "npm run storybook".
 4. Open a browser to *http://localhost:7007*, and the components can be viewed. If there are no menu, check again index.js.
 
+## Testing
+Enabled testing for HOC and Redux. **Please note**, that all imports needs to be "import * as React from 'react'", this is a proper library import.
+Test are based on both JEST and ENZYME. **Rule of Thumb**, Component testing are not useful, hence it is not created.
+
 ## 3rd Party API used.
 
 | Api        | Usage           | Url  | License  |

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react';
 import {Switch} from "react-native";
 import { StyleSheet, View, Text } from "react-native";
 import { CandleStickChart} from './CandleStickChart';

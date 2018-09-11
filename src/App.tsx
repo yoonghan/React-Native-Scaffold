@@ -1,7 +1,7 @@
 /**
  * Code starts here.
  */
-import React from 'react';
+import * as React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
