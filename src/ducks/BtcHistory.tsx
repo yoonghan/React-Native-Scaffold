@@ -2,20 +2,20 @@ import {btc_history_url, keyReplacement} from '../utils/Const';
 import {Connector} from '../utils/Connector';
 import {BtcHistoryItemI, BtcHistoryI} from '../interfaces/BtcHistoryListI';
 
-const FETCH_BTC_HISTORY_BEGIN   = 'FETCH_BTC_HISTORY_BEGIN';
-const FETCH_BTC_HISTORY_SUCCESS = 'FETCH_BTC_HISTORY_SUCCESS';
-const FETCH_BTC_HISTORY_FAILURE = 'FETCH_BTC_HISTORY_FAILURE';
+export const FETCH_BTC_HISTORY_BEGIN   = 'FETCH_BTC_HISTORY_BEGIN';
+export const FETCH_BTC_HISTORY_SUCCESS = 'FETCH_BTC_HISTORY_SUCCESS';
+export const FETCH_BTC_HISTORY_FAILURE = 'FETCH_BTC_HISTORY_FAILURE';
 
-const fetchBtcHistoryBegin = () => ({
+export const fetchBtcHistoryBegin = () => ({
   type: FETCH_BTC_HISTORY_BEGIN
 });
 
-const fetchBtcHistorySuccess = btchistory => ({
+export const fetchBtcHistorySuccess = btchistory => ({
   type: FETCH_BTC_HISTORY_SUCCESS,
   payload: { btchistory }
 });
 
-const fetchBtcHistoryError = error => ({
+export const fetchBtcHistoryError = error => ({
   type: FETCH_BTC_HISTORY_FAILURE,
   payload: { error }
 });

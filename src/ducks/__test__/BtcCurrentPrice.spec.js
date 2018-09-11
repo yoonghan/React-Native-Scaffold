@@ -1,5 +1,5 @@
 import 'react-native';
-import {fetchBtcCurrentPriceReducer as reducer} from '../BtcCurrentPrice'; //reducer
+import {reducer} from '../BtcCurrentPrice'; //reducer
 import {fetchBtcCurrentBegin, fetchBtcCurrentError, fetchBtcCurrentSuccess} from '../BtcCurrentPrice'; //action
 import {FETCH_BTC_CURRENT_FAILURE, FETCH_BTC_CURRENT_BEGIN, FETCH_BTC_CURRENT_SUCCESS} from '../BtcCurrentPrice'; //constants
 
