@@ -1,0 +1,28 @@
+---
+name: React Native Scaffolding
+route: /
+order: 1
+---
+
+# Introduction
+
+Created as a scaffolding information for react native and redux implemented into a single core.
+
+Regardless of the technologies and tools behind them, this system follows the principle:
+
+- **It’s consistent**. The way components are built and managed follows a predictable pattern.
+- **It’s self-contained**. Your design system is treated as a standalone dependency.
+- **It’s reusable**. You’ve built components so they can be reused in many contexts.
+- **It’s accessible**. Applications built with your design system are usable by as many people as possible, no matter how they access the web.
+- **It’s robust**. No matter the product or platform to which your design system is applied, it should perform with grace and minimal bugs.
+
+## Setup for docz
+
+To setup docz for react-native
+- It needs to implement **module:metro-react-native-babel-preset** in .babelrc, as there will be flow vs typescript error usage.
+- Make sure it is using babel 7
+- doczrc.js must be configured to use typescript and react-native
+
+## Storyboard, needed ?
+
+We may not need storyboard with docz, however react-native-web can and only can render react-native components, this makes it difficult to visualize 3rd party components such as graph. Hence, component testing are still best put into storyboard.

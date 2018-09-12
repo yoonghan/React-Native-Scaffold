@@ -1,0 +1,21 @@
+---
+name: Price Scroll Container
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz';
+import { PriceScrollItemContainer } from './PriceScrollItemContainer/index';
+
+# PriceScrollItemContainer
+To list all the prices.
+
+## Properties
+<PropsTable of={PriceScrollItemContainer} />
+
+## Basic usage
+<Playground>
+  <PriceScrollItemContainer items={[
+    {price:200, fromExchange:'BTC', toCurrency:'USD'},
+    {price:200, fromExchange:'BTC', toCurrency:'EUR'}
+  ]} itemClicked={function(input){console.log(input)}}/>
+</Playground>

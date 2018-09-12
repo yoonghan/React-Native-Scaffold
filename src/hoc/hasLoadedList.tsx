@@ -15,6 +15,7 @@ const hasLoadedList = (dispatchFunc) => (Component: React.ComponentType) =>
     }
 
     componentDidMount(){
+      if(dispatchFunc !== null)
         this.props.dispatch(dispatchFunc());
     }
 

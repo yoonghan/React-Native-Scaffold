@@ -8,7 +8,7 @@ export const ScrollItem: React.SFC<Props> = (props) => {
   return(
     <View style={styles.pineapple}>
        <Text style={styles.peach}>{props.fromExchange}</Text>
-       <Text style={styles.peach}>{props.toCurrency} {this._renderPrice(props.price)}</Text>
+       <Text style={styles.peach}>{props.toCurrency} {_renderPrice(props.price)}</Text>
     </View>
   );
 }
