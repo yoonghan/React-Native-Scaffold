@@ -1,4 +1,5 @@
 import * as React from 'react';
+import produce from "immer";
 import {Switch} from "react-native";
 import { StyleSheet, View, Text } from "react-native";
 import { CandleStickChart} from './CandleStickChart';
@@ -22,9 +23,11 @@ export class ChartContainer extends React.PureComponent<Props, State> {
   _convertDateToTime = (dateTime:Date) => dateTime ? dateTime.toLocaleString() : '';
 
   _toggleSwitch = () => {
-    this.setState((prevState) => ({
-      isBarChart: !prevState.isBarChart
-    }));
+    this.setState(
+      produce(draft => {
+          draft.isBarChart = !draft.isBarChart;
+      })
+    );
   }
 
   _displayChart = (isBarChart) => {

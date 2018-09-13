@@ -1,4 +1,5 @@
 import * as React from 'react';
+import produce from "immer";
 import { PermissionsAndroid } from 'react-native';
 import {Loader} from '../components/Loader';
 import {ErrorText} from '../components/ErrorText';
@@ -28,16 +29,18 @@ const hasLocation = (timeout:number) => (Component: React.ComponentType) =>
     }
 
     _setSuccess = (response) => {
-      this.setState((prevState) => ({
-        isLoading: false
-      }));
+      this.setState(produce(draft => {
+            draft.isLoading = false;
+        })
+      );
     }
 
     _setFailure = (response) => {
-      this.setState((prevState) => ({
-        isLoading: false,
-        isError: true
-      }));
+      this.setState(produce(draft => {
+            draft.isLoading = false;
+            draft.isError = true
+        })
+      );
     }
 
     async componentWillMount() {

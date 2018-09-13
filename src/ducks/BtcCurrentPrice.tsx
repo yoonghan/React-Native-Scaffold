@@ -1,5 +1,5 @@
 import {btc_current_url, listOfExchange, exchange, keyReplacement} from '../utils/Const';
-import update from 'immutability-helper';
+import produce from "immer";
 import {Connector} from '../utils/Connector';
 import {BtcCurrentPriceI, BtcCurrentPriceItemI} from '../interfaces/BtcCurrentPriceI';
 
@@ -74,7 +74,9 @@ export function reducer(state = initialState, action) {
     case FETCH_BTC_CURRENT_SUCCESS:
       return {
         ...state,
-        items: update(state.items, {$push: [action.payload.btccurrent]})
+        items: produce(state.items, draftState => {
+            draftState.push(action.payload.btccurrent)
+        })
       };
     case FETCH_BTC_CURRENT_FAILURE:
       return {

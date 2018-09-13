@@ -1,4 +1,5 @@
 import * as React from 'react';
+import produce from "immer";
 import { NetInfo, Platform } from 'react-native';
 import {ErrorText} from '../components/ErrorText';
 
@@ -20,10 +21,11 @@ const hasNetwork = (Component: React.ComponentType) =>
     }
 
     updateConnection = (isConnected) => {
-      this.setState((prevState) => ({
-        isChecking: false,
-        isConnectable: isConnected
-      }));
+      this.setState(produce(draft => {
+            draft.isChecking = false;
+            draft.isConnectable = isConnected;
+        })
+      );
     }
 
     handleFirstConnectivityChange = (isConnected) => {
