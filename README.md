@@ -1,5 +1,12 @@
 #Test code running
 
+**BROKEN CHANGES**
+As because babel-7 is used, the whole react-native broke. Considerably due to:
+1. "babel-preset-react-native": "^5.0.2" needs to be version 4 instead of 5, but docz needed 5.
+2. "module:metro-react-native-babel-preset" in .babelrc is not working for old react-native version.
+3. Test is broken as stylesheet cannot be read.
+4. Storybook is broken as metro module cannot be detected.
+
 ## Install
 Checkout the code
 ```
