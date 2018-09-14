@@ -5,11 +5,15 @@ import * as React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
 import BtcContainer from './components/BtcContainer';
+import SampleFetch from './components/SampleFetch';
 import reducer from './ducks';
+import loggerMiddleware from './middleware/logging';
+import fetchMiddleware from './middleware/fetch';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+//if there are logging, add into it via
+//applyMiddleware(thunk, loggerMiddleware);
+const createStoreWithMiddleware = applyMiddleware(fetchMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
 interface Props{}
@@ -23,11 +27,7 @@ export default class App extends React.Component<Props, States> {
   render() {
     return (
       <Provider store={store}>
-        <ScrollView>
-          <View style={styles.potato}>
-            <BtcContainer/>
-          </View>
-        </ScrollView>
+        <SampleFetch/>
       </Provider>
     );
   }

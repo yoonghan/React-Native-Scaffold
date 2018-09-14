@@ -24,7 +24,7 @@ Implemented component UI view directly from device, which is based on storybook.
 1. Change index.js and alter between Storybook or App.
 2. Start the emulator with "react-native run-<platform>".
 3. Start the storybook with "npm run storybook".
-4. Open a browser to *http://localhost:7007*, and the components can be viewed. If there are no menu, check again index.js.
+4. Open a browser to *http://localhost:7007*, and the components can be viewed. If there are no menu, check index.js again.
 
 ## Testing
 Enabled testing for HOC and Redux. **Please note**, that all imports needs to be "import * as React from 'react'", this is a proper library import.
@@ -46,7 +46,6 @@ Test are based on both JEST and ENZYME. **Rule of Thumb**, Component testing are
 ## Broken issues, to fix in future.
 1. Running on React 54. For some reason ver 55/56 was broken for windows, sticking with version 54 now.
 2. Skipped React PropType checking and relying on Typescript. However need to upgrade RN till 57 until typescript can work. :(
-3. To remove redux-thunk and create custom middleware or react-saga or react-observables.
 
 ## Applied React Patterns into the design
 1. *Higher Order Component* - A function within a function class (currying), visible in hoc/ folder where hasNetwork are just pluggable component into index.js.
@@ -55,4 +54,5 @@ Test are based on both JEST and ENZYME. **Rule of Thumb**, Component testing are
 4. *Redux-Thunk* - To modify but as of now redux thunk is used as there are async component from fetch. Replacable with custom middleware/react-saga/observable.
 5. *Folder structure* - A react pattern with folder as the name and index.js/tsx as the linked components. It's also one of organism pattern creation.
 6. *Functional Component* - All components created are React.SFC, except for PriceHistoryContainer(reason being it's storing a state for a switch).
-7. *Immutability* - Array modification are not reflected due to the same hash codes saved, use immutability-helper which can be viewed in BtcCurrentPrice.tsx.
+7. *Immutability* - Array modification are not reflected due to the same hash codes saved, use immer which the usage can be viewed in BtcCurrentPrice.tsx.
+8. *Custom Middleware* - Redux thunk was always an issue raised, hence the usage of redux middleware. Usage can be viewed in SampleFetch.tsx.

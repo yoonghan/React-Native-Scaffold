@@ -18,7 +18,7 @@ const withBtcConnectivity = (Component: React.ComponentType) =>
     }
 
     clickAndFetchBtcHistory = (cryptoType:string) => {
-        this.props.dispatch(fetchBtcHistory(cryptoType)());
+        fetchBtcHistory(cryptoType)(this.props.dispatch);
     }
 
     render() {

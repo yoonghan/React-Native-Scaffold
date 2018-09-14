@@ -6,20 +6,6 @@ export const FETCH_BTC_HISTORY_BEGIN   = 'FETCH_BTC_HISTORY_BEGIN';
 export const FETCH_BTC_HISTORY_SUCCESS = 'FETCH_BTC_HISTORY_SUCCESS';
 export const FETCH_BTC_HISTORY_FAILURE = 'FETCH_BTC_HISTORY_FAILURE';
 
-export const fetchBtcHistoryBegin = () => ({
-  type: FETCH_BTC_HISTORY_BEGIN
-});
-
-export const fetchBtcHistorySuccess = btchistory => ({
-  type: FETCH_BTC_HISTORY_SUCCESS,
-  payload: { btchistory }
-});
-
-export const fetchBtcHistoryError = error => ({
-  type: FETCH_BTC_HISTORY_FAILURE,
-  payload: { error }
-});
-
 const createHistoryData = (unixTimestamp: number, open: number, close: number, low: number, high: number):BtcHistoryItemI => {
   const decimalAccuracy = 2;
   const _date = unixTimeToDate(unixTimestamp);
@@ -35,7 +21,7 @@ const unixTimeToDate = (unixTimestamp: number) => {
   return new Date(unixTimestamp * miliseconds);
 }
 
-const reformatData = (data, ccType) => {
+const reformatData = ccType => data => {
   const lastFetchTime = unixTimeToDate(data.TimeTo);
   const historyData = data.Data;
   const historicalDatas = [];
@@ -51,19 +37,15 @@ const reformatData = (data, ccType) => {
 const formatUrlExchange = (url, exchange) =>
   url.replace(keyReplacement, exchange);
 
-export const fetchBtcHistory = (ccType) => () => {
-  return dispatch => {
-    dispatch(fetchBtcHistoryBegin());
-    return Connector.get(formatUrlExchange(btc_history_url, ccType))
-      .then(res => res.data)
-      .then(handleErrors)
-      .then(json => reformatData(json, ccType))
-      .then(formattedData => {
-        dispatch(fetchBtcHistorySuccess(formattedData));
-        return formattedData;
-      })
-      .catch(error => dispatch(fetchBtcHistoryError(error.message)));
-  };
+export const fetchBtcHistory = (ccType) => (dispatch) => {
+  dispatch({
+      types: [FETCH_BTC_HISTORY_BEGIN, FETCH_BTC_HISTORY_SUCCESS, FETCH_BTC_HISTORY_FAILURE],
+      fetchConfig: {
+          path: formatUrlExchange(btc_history_url, ccType),
+          method: "GET",
+          success: reformatData(ccType)
+      }
+  });
 }
 
 function handleErrors(data) {
@@ -91,9 +73,9 @@ export function reducer(state = initialState, action) {
     case FETCH_BTC_HISTORY_SUCCESS:
       return {
         ...state,
-        items: action.payload.btchistory.data,
-        cryptType: action.payload.btchistory.cryptType,
-        lastUpdatedDate: action.payload.btchistory.time
+        items: action.payload.data.data,
+        cryptType: action.payload.data.cryptType,
+        lastUpdatedDate: action.payload.data.time
       };
     case FETCH_BTC_HISTORY_FAILURE:
       return {
